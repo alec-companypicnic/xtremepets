@@ -30,6 +30,12 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      background-color: transparent;
+      transition: background-color 1.5s ease-in-out;
+    }
+
+    body.fish-mode {
+      background-color: #0085A1;
     }
 
     /* Main Section */
@@ -118,9 +124,18 @@
     .robot-main img {
       width: 95%;
       height: auto;
-      position: absolute;
       transition: opacity 1.5s ease-in-out;
       opacity: 1;
+    }
+
+    .robot-main img:first-child {
+      position: relative;
+    }
+
+    .robot-main img:last-child {
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
     .robot-main img.hidden {
@@ -156,9 +171,9 @@
       font-size: 16px;
       font-weight: 900;
       font-style: italic;
-      border: 3px solid rgba(0, 0, 0, 0.3);
+      border: 3px solid #79141B;
       border-radius: 50px;
-      background: rgba(0, 0, 0, 0.5);
+      background: #2E0708;
       color: #fff;
       width: 220px;
       outline: none;
@@ -168,6 +183,11 @@
       color: rgba(255, 255, 255, 0.5);
       font-style: italic;
       font-weight: 900;
+    }
+
+    .hero.fish-mode .signup-form input[type="email"] {
+      background: #141618;
+      border-color: #00434F;
     }
 
     .signup-form button {
@@ -203,7 +223,11 @@
     .footer-left {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 5px;
+    }
+
+    .footer-logo {
+      display: none;
     }
 
     .footer-gif {
@@ -240,19 +264,36 @@
       width: auto;
     }
 
+    /* Helio character */
+    .helio {
+      position: absolute;
+      left: -5vw;
+      top: -25vh;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    .helio img {
+      height: 80vh;
+      width: auto;
+    }
+
     /* Responsive */
     @media (max-width: 900px) {
       .content {
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
         text-align: center;
         padding: 2vw;
-        justify-content: center;
       }
 
       .title-area {
         width: 100%;
-        margin-bottom: 20px;
+        display: flex;
         justify-content: center;
+        margin-bottom: 30px;
+        margin-top: 20px;
       }
 
       .title-logo {
@@ -261,16 +302,91 @@
 
       .robot-main {
         width: 100%;
+        display: flex;
         justify-content: center;
+        position: relative;
+        min-height: 80vw;
+        margin-bottom: 40px;
       }
 
-      .robot-main img {
-        width: 70%;
-        position: relative;
+      .robot-main img,
+      .robot-main img:first-child,
+      .robot-main img:last-child {
+        width: 100% !important;
+        height: auto !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
       }
 
       .robot-main img.hidden {
-        position: absolute;
+        opacity: 0;
+      }
+
+      /* Hide top-left logo on mobile */
+      .logo {
+        display: none;
+      }
+
+      /* Helio adjustments for mobile */
+      .helio {
+        left: -30vw;
+        top: -30vh;
+      }
+
+      .helio img {
+        height: 70vh;
+      }
+
+      /* Footer adjustments for mobile */
+      footer {
+        flex-direction: row;
+        align-items: center;
+        padding: 0 !important;
+        margin: 0 !important;
+        gap: 5px;
+        min-height: auto;
+        background-size: 100% 100%;
+      }
+
+      .footer-left {
+        flex: 1;
+        gap: 5px;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-logo {
+        display: block;
+        height: 90px;
+        width: auto;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-tagline {
+        text-align: left;
+        font-size: 1rem;
+        line-height: 1.2;
+        max-width: 180px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin-left: 20px;
+      }
+
+      .footer-right {
+        gap: 24px;
+        padding: 0 20px;
+        margin: 0;
+      }
+
+      .social-icon {
+        height: 20px;
+        padding: 0;
+        margin: 0;
       }
     }
 
@@ -294,6 +410,9 @@
 </head>
 <body>
   <main class="hero">
+    <div class="helio">
+      <img src="Helio Idle Alpha.gif" alt="Helio">
+    </div>
     <div class="logo">
       <img src="top-left.png" alt="Company Picnic">
     </div>
@@ -320,6 +439,7 @@
 
   <footer>
     <div class="footer-left">
+      <img src="top-left.png" alt="Company Picnic" class="footer-logo">
       <p class="footer-tagline"><strong>The Company That Makes</strong> <em>Good Company</em></p>
     </div>
     <div class="footer-right">
@@ -334,6 +454,7 @@
 
   <script>
     const hero = document.querySelector('.hero');
+    const body = document.body;
     const catImg = document.getElementById('pet-cat');
     const fishImg = document.getElementById('pet-fish');
     let showingCat = true;
@@ -343,10 +464,12 @@
         catImg.classList.add('hidden');
         fishImg.classList.remove('hidden');
         hero.classList.add('fish-mode');
+        body.classList.add('fish-mode');
       } else {
         fishImg.classList.add('hidden');
         catImg.classList.remove('hidden');
         hero.classList.remove('fish-mode');
+        body.classList.remove('fish-mode');
       }
       showingCat = !showingCat;
     }, 8000);
