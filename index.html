@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XTREME Pet Therapist</title>
+  <style>
+    @font-face {
+      font-family: 'Sofia Sans';
+      src: url('Sofia_Sans/SofiaSans-VariableFont_wght.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Sofia Sans';
+      src: url('Sofia_Sans/SofiaSans-Italic-VariableFont_wght.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: italic;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Sofia Sans', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Main Section */
+    .hero {
+      flex: 1;
+      background-color: #E52428;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
+      overflow: hidden;
+      transition: background-color 1.5s ease-in-out;
+    }
+
+    .hero.fish-mode {
+      background-color: #0085A1;
+    }
+
+
+    /* Grainy texture overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("Xtreme Pets Texture.png");
+      background-size: cover;
+      background-position: center;
+      pointer-events: none;
+    }
+
+    /* Logo */
+    .logo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
+
+    .logo img {
+      height: 5vw;
+      min-height: 50px;
+      max-height: 100px;
+      width: auto;
+    }
+
+    /* Main content area */
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      padding: 1vw 5vw 1vw 12vw;
+      gap: 0;
+    }
+
+    /* Title area */
+    .title-area {
+      text-align: center;
+      width: 40%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .title-logo {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Main robot character */
+    .robot-main {
+      position: relative;
+      width: 60%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .robot-main img {
+      width: 95%;
+      height: auto;
+      position: absolute;
+      transition: opacity 1.5s ease-in-out;
+      opacity: 1;
+    }
+
+    .robot-main img.hidden {
+      opacity: 0;
+    }
+
+    /* CTA Section */
+    .cta {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      padding-bottom: 50px;
+      margin-top: -5vw;
+    }
+
+    .cta h2 {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .signup-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .signup-form input[type="email"] {
+      padding: 10px 20px;
+      font-family: 'Sofia Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 900;
+      font-style: italic;
+      border: 3px solid rgba(0, 0, 0, 0.3);
+      border-radius: 50px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      width: 220px;
+      outline: none;
+    }
+
+    .signup-form input[type="email"]::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+      font-style: italic;
+      font-weight: 900;
+    }
+
+    .signup-form button {
+      padding: 10px 20px;
+      font-family: 'Sofia Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 900;
+      border: none;
+      border-radius: 50px;
+      background: #f5f5f0;
+      color: #1a1a1a;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+
+    .signup-form button:hover {
+      background: #fff;
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      background: url('Company Picnic.avif') center/cover no-repeat;
+      padding: 18px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .footer-gif {
+      width: 50px;
+      height: auto;
+    }
+
+    .footer-tagline {
+      font-size: 1.4rem;
+      color: #1a1a1a;
+    }
+
+    .footer-tagline strong {
+      font-weight: 800;
+    }
+
+    .footer-tagline em {
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-right a {
+      display: flex;
+    }
+
+    .social-icon {
+      height: 28px;
+      width: auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .content {
+        flex-direction: column;
+        text-align: center;
+        padding: 2vw;
+        justify-content: center;
+      }
+
+      .title-area {
+        width: 100%;
+        margin-bottom: 20px;
+        justify-content: center;
+      }
+
+      .title-logo {
+        width: 60%;
+      }
+
+      .robot-main {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .robot-main img {
+        width: 70%;
+        position: relative;
+      }
+
+      .robot-main img.hidden {
+        position: absolute;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .signup-form {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .signup-form input[type="email"] {
+        border-radius: 50px;
+        width: 220px;
+      }
+
+      .signup-form button {
+        border-radius: 50px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="hero">
+    <div class="logo">
+      <img src="top-left.png" alt="Company Picnic">
+    </div>
+
+    <div class="content">
+      <div class="title-area">
+        <img src="logo.svg" alt="XTREME Pet Therapist" class="title-logo">
+      </div>
+
+      <div class="robot-main">
+        <img src="cat.png" alt="Cat Mech Robot" id="pet-cat">
+        <img src="fish.png" alt="Fish Mech Robot" id="pet-fish" class="hidden">
+      </div>
+    </div>
+
+    <div class="cta">
+      <h2>Get Early Access</h2>
+      <form class="signup-form">
+        <input type="email" placeholder="you@email.com" required>
+        <button type="submit">JOIN <span>❯</span></button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-left">
+      <p class="footer-tagline"><strong>The Company That Makes</strong> <em>Good Company</em></p>
+    </div>
+    <div class="footer-right">
+      <a href="#" aria-label="LinkedIn">
+        <img src="cp-linkedin.svg" alt="LinkedIn" class="social-icon">
+      </a>
+      <a href="#" aria-label="X">
+        <img src="cp-x.svg" alt="X" class="social-icon">
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    const hero = document.querySelector('.hero');
+    const catImg = document.getElementById('pet-cat');
+    const fishImg = document.getElementById('pet-fish');
+    let showingCat = true;
+
+    setInterval(() => {
+      if (showingCat) {
+        catImg.classList.add('hidden');
+        fishImg.classList.remove('hidden');
+        hero.classList.add('fish-mode');
+      } else {
+        fishImg.classList.add('hidden');
+        catImg.classList.remove('hidden');
+        hero.classList.remove('fish-mode');
+      }
+      showingCat = !showingCat;
+    }, 8000);
+  </script>
+</body>
+</html>
