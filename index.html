@@ -430,10 +430,11 @@
 
     <div class="cta">
       <h2>Get Early Access</h2>
-      <form class="signup-form">
-        <input type="email" placeholder="you@email.com" required>
+      <form class="signup-form" id="signup-form">
+        <input type="email" id="email-input" placeholder="you@email.com" required>
         <button type="submit">JOIN <span>❯</span></button>
       </form>
+      <p id="form-message" style="color: #fff; margin-top: 10px; display: none;"></p>
     </div>
   </main>
 
@@ -473,6 +474,38 @@
       }
       showingCat = !showingCat;
     }, 8000);
+
+    // Google Apps Script form submission
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwN4cApl5JK0kZvi9pM6dxZtwz3Z843Q9_GUnILS2gxwVMRbsOnaX67FgLIKcm8OHtK3g/exec';
+
+    document.getElementById('signup-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email-input').value;
+      const message = document.getElementById('form-message');
+      const button = e.target.querySelector('button');
+
+      button.disabled = true;
+      button.textContent = 'Submitting...';
+
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: 'email=' + encodeURIComponent(email)
+        });
+
+        message.textContent = 'Thanks! You\'re on the list.';
+        message.style.display = 'block';
+        document.getElementById('email-input').value = '';
+      } catch (error) {
+        message.textContent = 'Something went wrong. Please try again.';
+        message.style.display = 'block';
+      }
+
+      button.disabled = false;
+      button.innerHTML = 'JOIN <span>❯</span>';
+    });
   </script>
 </body>
 </html>
