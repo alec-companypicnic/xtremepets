@@ -7,14 +7,14 @@
   <style>
     @font-face {
       font-family: 'Sofia Sans';
-      src: url('Sofia_Sans/SofiaSans-VariableFont_wght.ttf') format('truetype');
+      src: url('fonts/SofiaSans-VariableFont_wght.ttf') format('truetype');
       font-weight: 100 900;
       font-style: normal;
     }
 
     @font-face {
       font-family: 'Sofia Sans';
-      src: url('Sofia_Sans/SofiaSans-Italic-VariableFont_wght.ttf') format('truetype');
+      src: url('fonts/SofiaSans-Italic-VariableFont_wght.ttf') format('truetype');
       font-weight: 100 900;
       font-style: italic;
     }
@@ -32,6 +32,7 @@
       flex-direction: column;
       background-color: transparent;
       transition: background-color 1.5s ease-in-out;
+      overflow-x: hidden;
     }
 
     body.fish-mode {
@@ -64,7 +65,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-image: url("Xtreme Pets Texture.png");
+      background-image: url("images/Xtreme Pets Texture.png");
       background-size: cover;
       background-position: center;
       pointer-events: none;
@@ -213,7 +214,7 @@
     /* Footer */
     footer {
       width: 100%;
-      background: url('Company Picnic.avif') center/cover no-repeat;
+      background: url('images/Company Picnic.avif') center/cover no-repeat;
       padding: 18px 30px;
       display: flex;
       justify-content: space-between;
@@ -268,13 +269,13 @@
     .helio {
       position: absolute;
       left: -5vw;
-      top: -25vh;
+      top: 5vh;
       z-index: 9999;
       pointer-events: none;
     }
 
     .helio img {
-      height: 80vh;
+      height: 35vh;
       width: auto;
     }
 
@@ -329,14 +330,14 @@
         display: none;
       }
 
-      /* Helio adjustments for mobile */
+      /* Helio adjustments for tablet */
       .helio {
-        left: -30vw;
-        top: -30vh;
+        left: -12vw;
+        top: 0;
       }
 
       .helio img {
-        height: 70vh;
+        height: 25vh;
       }
 
       /* Footer adjustments for mobile */
@@ -391,6 +392,10 @@
     }
 
     @media (max-width: 500px) {
+      .helio {
+        left: -28vw;
+      }
+
       .signup-form {
         flex-direction: column;
         align-items: center;
@@ -411,20 +416,20 @@
 <body>
   <main class="hero">
     <div class="helio">
-      <img src="Helio Idle Alpha.gif" alt="Helio">
+      <img src="images/Helio Idle Alpha Red 02.gif" alt="Helio">
     </div>
     <div class="logo">
-      <img src="top-left.png" alt="Company Picnic">
+      <img src="images/top-left.png" alt="Company Picnic">
     </div>
 
     <div class="content">
       <div class="title-area">
-        <img src="logo.svg" alt="XTREME Pet Therapist" class="title-logo">
+        <img src="images/logo.svg" alt="XTREME Pet Therapist" class="title-logo">
       </div>
 
       <div class="robot-main">
-        <img src="cat.png" alt="Cat Mech Robot" id="pet-cat">
-        <img src="fish.png" alt="Fish Mech Robot" id="pet-fish" class="hidden">
+        <img src="images/cat.png" alt="Cat Mech Robot" id="pet-cat">
+        <img src="images/fish.png" alt="Fish Mech Robot" id="pet-fish" class="hidden">
       </div>
     </div>
 
@@ -440,15 +445,15 @@
 
   <footer>
     <div class="footer-left">
-      <img src="top-left.png" alt="Company Picnic" class="footer-logo">
+      <img src="images/top-left.png" alt="Company Picnic" class="footer-logo">
       <p class="footer-tagline"><strong>The Company That Makes</strong> <em>Good Company</em></p>
     </div>
     <div class="footer-right">
       <a href="#" aria-label="LinkedIn">
-        <img src="cp-linkedin.svg" alt="LinkedIn" class="social-icon">
+        <img src="images/cp-linkedin.svg" alt="LinkedIn" class="social-icon">
       </a>
       <a href="#" aria-label="X">
-        <img src="cp-x.svg" alt="X" class="social-icon">
+        <img src="images/cp-x.svg" alt="X" class="social-icon">
       </a>
     </div>
   </footer>
