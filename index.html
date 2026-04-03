@@ -80,11 +80,36 @@
       z-index: 10;
     }
 
-    .logo img {
+    .logo img,
+    .logo video {
       height: 5vw;
       min-height: 50px;
       max-height: 100px;
       width: auto;
+    }
+
+    .top-discord {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      z-index: 10;
+      padding: 14px 20px;
+      font-family: 'Sofia Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 900;
+      border: none;
+      border-radius: 50px;
+      background: #f5f5f0;
+      color: #1a1a1a;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+
+    .top-discord:hover {
+      background: #fff;
     }
 
     /* Main content area */
@@ -167,40 +192,16 @@
       gap: 12px;
     }
 
-    .signup-form input[type="email"] {
-      padding: 10px 20px;
+    .signup-form a.discord-btn {
+      padding: 16px 36px;
       font-family: 'Sofia Sans', sans-serif;
-      font-size: 16px;
-      font-weight: 900;
-      font-style: italic;
-      border: 3px solid #79141B;
-      border-radius: 50px;
-      background: #2E0708;
-      color: #fff;
-      width: 220px;
-      outline: none;
-    }
-
-    .signup-form input[type="email"]::placeholder {
-      color: rgba(255, 255, 255, 0.5);
-      font-style: italic;
-      font-weight: 900;
-    }
-
-    .hero.fish-mode .signup-form input[type="email"] {
-      background: #141618;
-      border-color: #00434F;
-    }
-
-    .signup-form button {
-      padding: 10px 20px;
-      font-family: 'Sofia Sans', sans-serif;
-      font-size: 16px;
+      font-size: 20px;
       font-weight: 900;
       border: none;
       border-radius: 50px;
       background: #f5f5f0;
       color: #1a1a1a;
+      text-decoration: none;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -208,18 +209,47 @@
       transition: background 0.2s;
     }
 
-    .signup-form button:hover {
+    .signup-form a.discord-btn:hover {
       background: #fff;
     }
 
     /* Footer */
     footer {
       width: 100%;
-      background: url('images/Company Picnic.avif') center/cover no-repeat;
       padding: 18px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer .footer-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    footer::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #05C1F0;
+      mix-blend-mode: soft-light;
+      z-index: 1;
+    }
+
+    footer > * {
+      position: relative;
+      z-index: 2;
     }
 
     .footer-left {
@@ -229,7 +259,8 @@
     }
 
     .footer-logo {
-      display: none;
+      height: 60px;
+      width: auto;
     }
 
     .footer-gif {
@@ -403,12 +434,7 @@
         gap: 10px;
       }
 
-      .signup-form input[type="email"] {
-        border-radius: 50px;
-        width: 220px;
-      }
-
-      .signup-form button {
+      .signup-form a.discord-btn {
         border-radius: 50px;
       }
     }
@@ -420,8 +446,17 @@
       <img src="images/Helio Idle Alpha Red 02.gif" alt="Helio">
     </div>
     <div class="logo">
-      <img src="images/top-left.png" alt="Company Picnic">
+      <a href="https://www.companypicnic.com/" target="_blank" rel="noopener noreferrer">
+        <video autoplay muted loop playsinline>
+          <source src="images/CoPicnic_EyeBlink_V1.mp4" type="video/mp4">
+        </video>
+      </a>
     </div>
+
+    <a href="https://discord.gg/AzHrkT6s" class="top-discord" target="_blank" rel="noopener noreferrer">
+      <svg width="20" height="15" viewBox="0 0 71 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M60.1 4.9A58.5 58.5 0 0045.4.2a.2.2 0 00-.2.1 40.8 40.8 0 00-1.8 3.7 54 54 0 00-16.2 0A37.4 37.4 0 0025.4.3a.2.2 0 00-.2-.1A58.4 58.4 0 0010.5 4.9a.2.2 0 00-.1.1C1.5 18.7-.9 32.2.3 45.5v.2a58.9 58.9 0 0017.7 9 .2.2 0 00.3-.1 42.1 42.1 0 003.6-5.9.2.2 0 00-.1-.3 38.8 38.8 0 01-5.5-2.6.2.2 0 01 0-.4l1.1-.9a.2.2 0 01.2 0 42 42 0 0035.6 0 .2.2 0 01.2 0l1.1.9a.2.2 0 010 .4 36.4 36.4 0 01-5.5 2.6.2.2 0 00-.1.3 47.2 47.2 0 003.6 5.9.2.2 0 00.3.1A58.7 58.7 0 0070.5 45.7v-.2c1.4-15-2.3-28.4-9.8-40.1a.2.2 0 00-.1-.1h-.5zM23.7 37.3c-3.5 0-6.3-3.2-6.3-7.1s2.8-7.1 6.3-7.1 6.4 3.2 6.3 7.1c0 3.9-2.8 7.1-6.3 7.1zm23.3 0c-3.5 0-6.3-3.2-6.3-7.1s2.8-7.1 6.3-7.1 6.4 3.2 6.3 7.1c0 3.9-2.7 7.1-6.3 7.1z" fill="#1a1a1a"/></svg>
+      Join our Discord
+    </a>
 
     <div class="content">
       <div class="title-area">
@@ -436,25 +471,28 @@
 
     <div class="cta">
       <h2>Get Early Access</h2>
-      <form class="signup-form" id="signup-form">
-        <input type="email" id="email-input" placeholder="you@email.com" required>
-        <button type="submit">JOIN <span>❯</span></button>
-      </form>
-      <p id="form-message" style="color: #fff; margin-top: 10px; display: none;"></p>
+      <div class="signup-form">
+        <a href="https://discord.gg/AzHrkT6s" class="discord-btn" target="_blank" rel="noopener noreferrer">
+          <svg width="26" height="20" viewBox="0 0 71 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M60.1 4.9A58.5 58.5 0 0045.4.2a.2.2 0 00-.2.1 40.8 40.8 0 00-1.8 3.7 54 54 0 00-16.2 0A37.4 37.4 0 0025.4.3a.2.2 0 00-.2-.1A58.4 58.4 0 0010.5 4.9a.2.2 0 00-.1.1C1.5 18.7-.9 32.2.3 45.5v.2a58.9 58.9 0 0017.7 9 .2.2 0 00.3-.1 42.1 42.1 0 003.6-5.9.2.2 0 00-.1-.3 38.8 38.8 0 01-5.5-2.6.2.2 0 01 0-.4l1.1-.9a.2.2 0 01.2 0 42 42 0 0035.6 0 .2.2 0 01.2 0l1.1.9a.2.2 0 010 .4 36.4 36.4 0 01-5.5 2.6.2.2 0 00-.1.3 47.2 47.2 0 003.6 5.9.2.2 0 00.3.1A58.7 58.7 0 0070.5 45.7v-.2c1.4-15-2.3-28.4-9.8-40.1a.2.2 0 00-.1-.1h-.5zM23.7 37.3c-3.5 0-6.3-3.2-6.3-7.1s2.8-7.1 6.3-7.1 6.4 3.2 6.3 7.1c0 3.9-2.8 7.1-6.3 7.1zm23.3 0c-3.5 0-6.3-3.2-6.3-7.1s2.8-7.1 6.3-7.1 6.4 3.2 6.3 7.1c0 3.9-2.7 7.1-6.3 7.1z" fill="#1a1a1a"/></svg>
+          Join our Discord
+        </a>
+      </div>
     </div>
   </main>
 
   <footer>
+    <video class="footer-video" autoplay muted loop playsinline>
+      <source src="images/footer-bg.mp4" type="video/mp4">
+    </video>
     <div class="footer-left">
-      <img src="images/top-left.png" alt="Company Picnic" class="footer-logo">
       <p class="footer-tagline"><strong>The Company That Makes</strong> <em>Good Company</em></p>
     </div>
     <div class="footer-right">
-      <a href="https://www.linkedin.com/company/company-picnic" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
-        <img src="images/cp-linkedin.svg" alt="LinkedIn" class="social-icon">
-      </a>
-      <a href="https://x.com/xtremepets85081" aria-label="X" target="_blank" rel="noopener noreferrer">
+      <a href="https://x.com/xtremepets" aria-label="X" target="_blank" rel="noopener noreferrer">
         <img src="images/cp-x.svg" alt="X" class="social-icon">
+      </a>
+      <a href="https://www.instagram.com/xtremepets?igsh=NTc4MTIwNjQ2YQ==" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+        <img src="images/cp-instagram.svg" alt="Instagram" class="social-icon">
       </a>
     </div>
   </footer>
@@ -481,37 +519,6 @@
       showingCat = !showingCat;
     }, 8000);
 
-    // Google Apps Script form submission
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwN4cApl5JK0kZvi9pM6dxZtwz3Z843Q9_GUnILS2gxwVMRbsOnaX67FgLIKcm8OHtK3g/exec';
-
-    document.getElementById('signup-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = document.getElementById('email-input').value;
-      const message = document.getElementById('form-message');
-      const button = e.target.querySelector('button');
-
-      button.disabled = true;
-      button.textContent = 'Submitting...';
-
-      try {
-        await fetch(GOOGLE_SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: 'email=' + encodeURIComponent(email)
-        });
-
-        message.textContent = 'Thanks! You\'re on the list.';
-        message.style.display = 'block';
-        document.getElementById('email-input').value = '';
-      } catch (error) {
-        message.textContent = 'Something went wrong. Please try again.';
-        message.style.display = 'block';
-      }
-
-      button.disabled = false;
-      button.innerHTML = 'JOIN <span>❯</span>';
-    });
   </script>
 </body>
 </html>
